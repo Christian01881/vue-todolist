@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <input type="text" name="ingredienti" id="ingredienti" v-model="item" @keyup.enter="insert">
+            <button @click="insert">Invia</button>
+            <div v-if="error">Inserisci un ingrediente di almeno 3 lettere</div>
+            <ul v-if="listaSpesa.length > 0">
+                    <li @click="notComplete(index)" :class="{'Myclass': item.completed}" v-for="item, index in listaSpesa" :key="index">
+                    <span>{{item.name}}</span>
+                    <button @click="complete(index)">Fatto</button>
+                    <button @click="deleteLi(index)">Cancella</button>
+                </li>
+            </ul>
+            <h3 v-else>La lista della spesa è vuota</h3>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
