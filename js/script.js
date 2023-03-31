@@ -62,8 +62,7 @@ createApp({
         },
         complete(index){
             this.listaSpesa[index].completed = true;
-        },
-        
+        }
         },
     mounted(){
 

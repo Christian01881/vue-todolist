@@ -12,21 +12,36 @@
 <body>
     <div id="app">
         <div class="container">
-            <input type="text" name="ingredienti" id="ingredienti" v-model="item" @keyup.enter="insert">
-            <button @click="insert">Invia</button>
-            <div v-if="error">Inserisci un ingrediente di almeno 3 lettere</div>
-            <ul v-if="listaSpesa.length > 0">
-                    <li @click="notComplete(index)" :class="{'Myclass': item.completed}" v-for="item, index in listaSpesa" :key="index">
-                    <span>{{item.name}}</span>
-                    <button @click="complete(index)">Fatto</button>
-                    <button @click="deleteLi(index)">Cancella</button>
-                </li>
-            </ul>
-            <h3 v-else>La lista della spesa è vuota</h3>
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 d-flex justify-content-center align-items-center">
+                    <div class="card CPM-bg-orange mt-5">
+                        <div class="card-title p-5">
+                            <h1 class="CPM-color-green">Todo List Pasquetta</h1>
+                        </div>
+                        <div class="card-body text-center">
+                            <input class="me-1" type="text" name="ingredienti" id="ingredienti" v-model="item" @keyup.enter="insert">
+                            <button class="ms-1" @click="insert">Invia</button>
+                            <div v-if="error" class="CPM-color-green">Inserisci un ingrediente di almeno 3 lettere, <br> e ricordati di portare da bere a chi fa la brace!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4 justify-content-center align-items-center">
+                    <div class="list-group me-4 mt-3">
+                        <ul v-if="listaSpesa.length > 0">
+                            <li class="list-group-item d-flex justify-content-between align-items-center border-dark rounded CPM-list" @click="notComplete(index)" :class="{'Myclass': item.completed}" v-for="item, index in listaSpesa" :key="index">
+                                <span class="ms-4 fs-5">{{item.name}}</span>
+                                <div>
+                                    <button class="btn btn-outline-success border-3 fs-5 me-3" @click="complete(index)"><i class="fa-solid fa-check"></i></button>
+                                    <button class="btn btn-outline-danger border-3 fs-5" @click="deleteLi(index)"><i class="fa-solid fa-trash"></i></button>
+                                </div>
+                            </li>
+                        </ul>
+                        <h3 v-else>La lista della spesa è vuota! Comprale almeno le birre!</h3>
+                    </div>
+                </div>  
+            </div>
         </div>
     </div>
-    
-
 
 
 
